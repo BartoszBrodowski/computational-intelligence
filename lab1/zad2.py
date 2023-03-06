@@ -65,26 +65,26 @@ print("Mean of Szczecin column: ", ((df2['Szczecin'] - df2['Szczecin'].mean()) /
 print("Standard deviation of Szczecin column: ", ((df2['Szczecin'] - df2['Szczecin'].mean()) / df2['Szczecin'].std()).std())
 print('------------------------')
 
-# # Normalize Gdansk column
-# print("Normalize Gdansk column")
-# print((df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()))
-# print("Max value of Gdansk column: ", (df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()).max())
-# print("Min value of Gdansk column: ", (df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()).min())
-# print('------------------------')
+# Normalize Gdansk column
+print("Normalize Gdansk column")
+print((df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()))
+print("Max value of Gdansk column: ", (df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()).max())
+print("Min value of Gdansk column: ", (df2['Gdansk'] - df2['Gdansk'].min()) / (df2['Gdansk'].max() - df2['Gdansk'].min()).min())
+print('------------------------')
 
-# # Normalize Poznan column
-# print("Normalize Poznan column")
-# print((df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()))
-# print("Max value of Poznan column: ", (df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()).max())
-# print("Min value of Poznan column: ", (df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()).min())
-# print('------------------------')
+# Normalize Poznan column
+print("Normalize Poznan column")
+print((df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()))
+print("Max value of Poznan column: ", (df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()).max())
+print("Min value of Poznan column: ", (df2['Poznan'] - df2['Poznan'].min()) / (df2['Poznan'].max() - df2['Poznan'].min()).min())
+print('------------------------')
 
-# # Normalize Szczecin column
-# print("Normalize Szczecin column")
-# print((df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()))
-# print("Max value of Szczecin column: ", (df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()).max())
-# print("Min value of Szczecin column: ", (df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()).min())
-# print('------------------------')
+# Normalize Szczecin column
+print("Normalize Szczecin column")
+print((df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()))
+print("Max value of Szczecin column: ", (df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()).max())
+print("Min value of Szczecin column: ", (df2['Szczecin'] - df2['Szczecin'].min()) / (df2['Szczecin'].max() - df2['Szczecin'].min()).min())
+print('------------------------')
 
 
 
