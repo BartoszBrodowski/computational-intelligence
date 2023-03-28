@@ -2,8 +2,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.naive_bayes import GaussianNB
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 windows_path = "C:\\Users\\Admin\\Desktop\\Programowanie\\2Rok\\4Semestr\\inteligencja_obliczeniowa\\lab5\\iris.csv"
 
@@ -58,34 +60,96 @@ for i in range(length):
 y_true = test_set[:, 4]
 y_pred = clf.predict(test_set[:, 0:4])
 
-print(confusion_matrix(y_true, y_pred))
+cm = confusion_matrix(y_true, y_pred)
+
+train_inputs = train_set[:, 0:4]
+train_classes = train_set[:, 4]
+test_inputs = test_set[:, 0:4]
+test_classes = test_set[:, 4]
+
+cm_df = pd.DataFrame(cm,
+                     index = ['setosa','versicolor','virginica'], 
+                     columns = ['setosa','versicolor','virginica'])
+
+plt.figure(figsize=(5.5,4))
+sns.heatmap(cm_df, annot=True)
+plt.title('Fit of function (Decision Tree) \nAccuracy:{0:.3f}'.format(accuracy_score(test_classes, y_pred)))
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
 
 # print(good_predictions)
 
 # print(good_predictions/length*100, "%")
+knn = KNeighborsClassifier(n_neighbors=3, metric='euclidean')
+knn.fit(train_inputs,train_classes)
+
+result_of_prediction = knn.predict(test_inputs)
+result_of_prediction
+cm = confusion_matrix(test_classes,result_of_prediction)
+cm_df = pd.DataFrame(cm,
+                     index = ['setosa','versicolor','virginica'], 
+                     columns = ['setosa','versicolor','virginica'])
+
+plt.figure(figsize=(5.5,4))
+sns.heatmap(cm_df, annot=True)
+plt.title('Fit of function (3 Neighbors) \nAccuracy:{0:.3f}'.format(accuracy_score(test_classes, result_of_prediction)))
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
+
+knn = KNeighborsClassifier(n_neighbors=5, metric='euclidean')
+knn.fit(train_inputs,train_classes)
+
+result_of_prediction = knn.predict(test_inputs)
+result_of_prediction
+cm = confusion_matrix(test_classes,result_of_prediction)
+cm_df = pd.DataFrame(cm,
+                     index = ['setosa','versicolor','virginica'], 
+                     columns = ['setosa','versicolor','virginica'])
+
+plt.figure(figsize=(5.5,4))
+sns.heatmap(cm_df, annot=True)
+plt.title('Fit of function (5 Neighbors) \nAccuracy:{0:.3f}'.format(accuracy_score(test_classes, result_of_prediction)))
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
 
 clf = KNeighborsClassifier(n_neighbors=11)
-clf = clf.fit(train_set[:, 0:4], train_set[:, 4])
+clf = clf.fit(train_inputs, train_classes)
+
+result_of_prediction = knn.predict(test_inputs)
+result_of_prediction
+cm = confusion_matrix(test_classes,result_of_prediction)
+cm_df = pd.DataFrame(cm,
+                     index = ['setosa','versicolor','virginica'], 
+                     columns = ['setosa','versicolor','virginica'])
+
+plt.figure(figsize=(5.5,4))
+sns.heatmap(cm_df, annot=True)
+plt.title('Fit of function (11 Neighbors) \nAccuracy:{0:.3f}'.format(accuracy_score(test_classes, result_of_prediction)))
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
 
 good_predictions = 0
 length = test_set.shape[0]
 
-for i in range(length):
-    if clf.predict([test_set[i][0:4]]) == test_set[i, 4]:
-        good_predictions = good_predictions + 1
-
-print(good_predictions)
-print(good_predictions/length*100, "%")
-
-y_true = test_set[:, 4]
-y_pred = clf.predict(test_set[:, 0:4])
-
-print(confusion_matrix(y_true, y_pred))
 
 gnb = GaussianNB()
 
+gnb.fit(train_inputs,train_classes)
+
 y_pred = gnb.fit(train_set[:, 0:4], train_set[:, 4]).predict(test_set[:, 0:4])
 
-print("Number of mislabeled points out of a total %d points : %d" % (test_set.shape[0], (test_set[:, 4] != y_pred).sum()))
+cm = confusion_matrix(test_classes,result_of_prediction)
+cm_df = pd.DataFrame(cm,
+                     index = ['setosa','versicolor','virginica'], 
+                     columns = ['setosa','versicolor','virginica'])
 
-print(confusion_matrix(test_set[:, 4], y_pred))
+plt.figure(figsize=(5.5,4))
+sns.heatmap(cm_df, annot=True)
+plt.title('Fit of function (Bayes) \nAccuracy:{0:.3f}'.format(accuracy_score(test_classes, result_of_prediction)))
+plt.ylabel('True label')
+plt.xlabel('Predicted label')
+plt.show()
