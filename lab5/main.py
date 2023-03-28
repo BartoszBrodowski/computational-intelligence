@@ -1,7 +1,9 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import tree
-from sklearn.neighbours import NeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix
+from sklearn.naive_bayes import GaussianNB
 
 windows_path = "C:\\Users\\Admin\\Desktop\\Programowanie\\2Rok\\4Semestr\\inteligencja_obliczeniowa\\lab5\\iris.csv"
 
@@ -53,7 +55,37 @@ for i in range(length):
     if clf.predict([test_set[i][0:4]]) == test_set[i, 4]:
         good_predictions = good_predictions + 1
 
-print(good_predictions)
+y_true = test_set[:, 4]
+y_pred = clf.predict(test_set[:, 0:4])
 
+print(confusion_matrix(y_true, y_pred))
+
+# print(good_predictions)
+
+# print(good_predictions/length*100, "%")
+
+clf = KNeighborsClassifier(n_neighbors=11)
+clf = clf.fit(train_set[:, 0:4], train_set[:, 4])
+
+good_predictions = 0
+length = test_set.shape[0]
+
+for i in range(length):
+    if clf.predict([test_set[i][0:4]]) == test_set[i, 4]:
+        good_predictions = good_predictions + 1
+
+print(good_predictions)
 print(good_predictions/length*100, "%")
 
+y_true = test_set[:, 4]
+y_pred = clf.predict(test_set[:, 0:4])
+
+print(confusion_matrix(y_true, y_pred))
+
+gnb = GaussianNB()
+
+y_pred = gnb.fit(train_set[:, 0:4], train_set[:, 4]).predict(test_set[:, 0:4])
+
+print("Number of mislabeled points out of a total %d points : %d" % (test_set.shape[0], (test_set[:, 4] != y_pred).sum()))
+
+print(confusion_matrix(test_set[:, 4], y_pred))
