@@ -45,8 +45,10 @@ class CustomGA(pygad.GA):
     def mutation(self, offspring):
         return self.custom_mutation(offspring)
 
+# Define the gene space
 gene_space = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+# Define the Sudoku board
 initial_board = np.array([
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
     [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -59,6 +61,7 @@ initial_board = np.array([
     [0, 0, 0, 0, 8, 0, 0, 7, 9]
 ])
 
+# Define the fitness function
 def fitness_function(solution, solution_idx):
     board = solution.reshape((9, 9))
     fitness = 0
@@ -86,10 +89,12 @@ def fitness_function(solution, solution_idx):
     for i in range(9):
         for j in range(9):
             if initial_board[i][j] != 0 and board[i][j] != initial_board[i][j]:
-                fitness -= 5
+                fitness -= 20
 
     return -fitness
 
+
+# Create an instance of the GA class inside the ga module. Some parameters are initialized within the constructor.
 ga_instance = CustomGA(
     initial_population=None,
     num_generations=1000,
@@ -104,11 +109,20 @@ ga_instance = CustomGA(
     parent_selection_type="sss"
 )
 
+# Run the GA to compute the solution
 ga_instance.run()
+
+# After the generations complete, some plots are showed that summarize how the outputs/fitness values evolve over generations.
 ga_instance.plot_fitness()
 
+# Retrieve the best solution after training the GA.
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
+
+# Print the solution and solution's fitness
 print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
 
+# Reshape the solution into a 9x9 grid
 board = solution.reshape((9, 9))
+
+# Print the board
 print(board)
