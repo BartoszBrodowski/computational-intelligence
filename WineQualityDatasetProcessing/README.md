@@ -6,6 +6,13 @@ This project was supposed to teach me how to handle data processing for AI purpo
 
 I've also used this project to learn how to use `matplotlib` and `seaborn` libraries for data visualization.
 
+The project consists of 2 files:
+
+- less_processed.ipynb
+- more_processed.ipynb
+
+Both files were used to show the advantages of data processing. The first file contains the data with a lot less processing, while the second file contains the data processed with more different methods.
+
 I've used [Wine Quality Dataset](https://www.kaggle.com/datasets/shelvigarg/wine-quality-dataset) csv file from kaggle.com. It contains 13 columns, 12 of which are features and 1 is the quality of the wine. The goal of this project is to predict the quality of the wine based on the features.
 
 ### Data Processing
