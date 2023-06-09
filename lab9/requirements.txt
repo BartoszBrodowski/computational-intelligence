@@ -1,0 +1,10 @@
+gym
+box2d
+box2d-kengz
+gym[box2d]
+gym[atari]
+gym[accept-rom-license]
+imageio
+mujoco
+pygad
+numpy
