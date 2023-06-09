@@ -116,7 +116,7 @@ print(solution_fitness)
 # wyswietlenie wykresu: jak zmieniala sie ocena na przestrzeni pokolen
 # ga_instance.plot_fitness()
 
-env = gym.make("FrozenLake8x8-v1", render_mode="human", is_slippery=False)
+env = gym.make("LunarLander-v2", render_mode="human", is_slippery=False)
 
 
 observation, info = env.reset()
